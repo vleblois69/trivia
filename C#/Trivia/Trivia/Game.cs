@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Trivia;
 
 namespace UglyTrivia
 {
@@ -9,7 +10,7 @@ namespace UglyTrivia
     {
 
 
-        List<string> players = new List<string>();
+        List<Player> players = new List<Player>();
 
         int[] places = new int[6];
         int[] purses = new int[6];
@@ -49,7 +50,7 @@ namespace UglyTrivia
         {
 
 
-            players.Add(playerName);
+            players.Add(new Player(playerName));
             places[howManyPlayers()] = 0;
             purses[howManyPlayers()] = 0;
             inPenaltyBox[howManyPlayers()] = false;
