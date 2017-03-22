@@ -8,10 +8,12 @@ namespace Trivia
     class Player
     {
         private String name;
+        private int place;
 
-        public Player(String newName)
+        public Player(String newName, int newPlace)
         {
             this.name = newName;
+            this.place = newPlace;
         }
 
         public String getName()
@@ -23,6 +25,17 @@ namespace Trivia
         {
             this.name = newName;
         }
+
+        public int getPlace()
+        {
+            return place;
+        }
+
+        public void setPlace(int newPlace)
+        {
+            this.place = newPlace;
+        }
+
 
         public override string ToString()
         {

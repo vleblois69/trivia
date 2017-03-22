@@ -12,7 +12,6 @@ namespace UglyTrivia
 
         List<Player> players = new List<Player>();
 
-        int[] places = new int[6];
         int[] purses = new int[6];
 
         bool[] inPenaltyBox = new bool[6];
@@ -48,10 +47,9 @@ namespace UglyTrivia
 
         public bool add(String playerName)
         {
+            Player player = new Player(playerName, 0);
 
-
-            players.Add(new Player(playerName));
-            places[howManyPlayers()] = 0;
+            players.Add(player);
             purses[howManyPlayers()] = 0;
             inPenaltyBox[howManyPlayers()] = false;
 
@@ -67,6 +65,8 @@ namespace UglyTrivia
 
         public void roll(int roll)
         {
+            Player player = players[currentPlayer];
+
             Console.WriteLine(players[currentPlayer] + " is the current player");
             Console.WriteLine("They have rolled a " + roll);
 
@@ -77,12 +77,12 @@ namespace UglyTrivia
                     isGettingOutOfPenaltyBox = true;
 
                     Console.WriteLine(players[currentPlayer] + " is getting out of the penalty box");
-                    places[currentPlayer] = places[currentPlayer] + roll;
-                    if (places[currentPlayer] > 11) places[currentPlayer] = places[currentPlayer] - 12;
-
-                    Console.WriteLine(players[currentPlayer]
+                    player.setPlace(player.getPlace() + roll);
+                    if (player.getPlace() > 11) 
+                        player.setPlace(player.getPlace() - 12);
+                    Console.WriteLine(player.getName()
                             + "'s new location is "
-                            + places[currentPlayer]);
+                            + player.getPlace());
                     Console.WriteLine("The category is " + currentCategory());
                     askQuestion();
                 }
@@ -96,12 +96,13 @@ namespace UglyTrivia
             else
             {
 
-                places[currentPlayer] = places[currentPlayer] + roll;
-                if (places[currentPlayer] > 11) places[currentPlayer] = places[currentPlayer] - 12;
+                player.setPlace(player.getPlace() + roll); ;
+                if (player.getPlace() > 11)
+                    player.setPlace(player.getPlace() - 12);
 
-                Console.WriteLine(players[currentPlayer]
+                Console.WriteLine(player.getName()
                         + "'s new location is "
-                        + places[currentPlayer]);
+                        + player.getPlace());
                 Console.WriteLine("The category is " + currentCategory());
                 askQuestion();
             }
@@ -135,27 +136,33 @@ namespace UglyTrivia
 
         private String currentCategory()
         {
-            if (places[currentPlayer] == 0) return "Pop";
-            if (places[currentPlayer] == 4) return "Pop";
-            if (places[currentPlayer] == 8) return "Pop";
-            if (places[currentPlayer] == 1) return "Science";
-            if (places[currentPlayer] == 5) return "Science";
-            if (places[currentPlayer] == 9) return "Science";
-            if (places[currentPlayer] == 2) return "Sports";
-            if (places[currentPlayer] == 6) return "Sports";
-            if (places[currentPlayer] == 10) return "Sports";
+            Player player = players[currentPlayer];
+
+            int place = player.getPlace();
+
+            if (place == 0) return "Pop";
+            if (place == 4) return "Pop";
+            if (place == 8) return "Pop";
+            if (place == 1) return "Science";
+            if (place == 5) return "Science";
+            if (place == 9) return "Science";
+            if (place == 2) return "Sports";
+            if (place == 6) return "Sports";
+            if (place == 10) return "Sports";
             return "Rock";
         }
 
         public bool wasCorrectlyAnswered()
         {
+            Player player = players[currentPlayer];
+
             if (inPenaltyBox[currentPlayer])
             {
                 if (isGettingOutOfPenaltyBox)
                 {
                     Console.WriteLine("Answer was correct!!!!");
                     purses[currentPlayer]++;
-                    Console.WriteLine(players[currentPlayer]
+                    Console.WriteLine(player.getName()
                             + " now has "
                             + purses[currentPlayer]
                             + " Gold Coins.");
@@ -181,7 +188,7 @@ namespace UglyTrivia
 
                 Console.WriteLine("Answer was corrent!!!!");
                 purses[currentPlayer]++;
-                Console.WriteLine(players[currentPlayer]
+                Console.WriteLine(player.getName()
                         + " now has "
                         + purses[currentPlayer]
                         + " Gold Coins.");
@@ -196,8 +203,10 @@ namespace UglyTrivia
 
         public bool wrongAnswer()
         {
+            Player player = players[currentPlayer];
+
             Console.WriteLine("Question was incorrectly answered");
-            Console.WriteLine(players[currentPlayer] + " was sent to the penalty box");
+            Console.WriteLine(player.getName() + " was sent to the penalty box");
             inPenaltyBox[currentPlayer] = true;
 
             currentPlayer++;
