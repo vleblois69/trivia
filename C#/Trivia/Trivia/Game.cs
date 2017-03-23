@@ -6,11 +6,7 @@ namespace Trivia
 {
     public class Game
     {
-
-
-        List<Player> players = new List<Player>();
-
-        bool[] inPenaltyBox = new bool[6];
+        private readonly List<Player> _players = new List<Player>();
 
         LinkedList<string> popQuestions = new LinkedList<string>();
         LinkedList<string> scienceQuestions = new LinkedList<string>();
@@ -45,27 +41,26 @@ namespace Trivia
         {
             Player player = new Player(playerName);
 
-            players.Add(player);
-            inPenaltyBox[HowManyPlayers()] = false;
+            _players.Add(player);
 
             Console.WriteLine(playerName + " was added");
-            Console.WriteLine("They are player number " + players.Count);
+            Console.WriteLine("They are player number " + _players.Count);
             return true;
         }
 
         public int HowManyPlayers()
         {
-            return players.Count;
+            return _players.Count;
         }
 
         public void Roll(int roll)
         {
-            Player player = players[currentPlayer];
+            Player player = _players[currentPlayer];
 
             Console.WriteLine(player.Name + " is the current player");
             Console.WriteLine("They have rolled a " + roll);
 
-            if (inPenaltyBox[currentPlayer])
+            if (player.InPenaltyBox)
             {
                 if (roll % 2 != 0)
                 {
@@ -126,7 +121,7 @@ namespace Trivia
 
         private string CurrentCategory()
         {
-            Player player = players[currentPlayer];
+            Player player = _players[currentPlayer];
 
             int place = player.Place;
 
@@ -144,62 +139,53 @@ namespace Trivia
 
         public bool WasCorrectlyAnswered()
         {
-            Player player = players[currentPlayer];
+            Player player = _players[currentPlayer];
 
-            if (inPenaltyBox[currentPlayer])
+            bool winner;
+            if (player.InPenaltyBox)
             {
                 if (isGettingOutOfPenaltyBox)
                 {
                     Console.WriteLine("Answer was correct!!!!");
                     player.WinAGoldCoin();
 
-                    bool winner = DidPlayerWin();
+                    winner = DidPlayerWin();
                     currentPlayer++;
-                    if (currentPlayer == players.Count) currentPlayer = 0;
+                    if (currentPlayer == _players.Count) currentPlayer = 0;
 
                     return winner;
                 }
-                else
-                {
-                    currentPlayer++;
-                    if (currentPlayer == players.Count) currentPlayer = 0;
-                    return true;
-                }
-
-
-
-            }
-            else
-            {
-
-                Console.WriteLine("Answer was corrent!!!!");
-                player.WinAGoldCoin();
-
-                bool winner = DidPlayerWin();
                 currentPlayer++;
-                if (currentPlayer == players.Count) currentPlayer = 0;
-
-                return winner;
+                if (currentPlayer == _players.Count) currentPlayer = 0;
+                return true;
             }
+            Console.WriteLine("Answer was corrent!!!!");
+            player.WinAGoldCoin();
+
+            winner = DidPlayerWin();
+            currentPlayer++;
+            if (currentPlayer == _players.Count) currentPlayer = 0;
+
+            return winner;
         }
 
         public bool WrongAnswer()
         {
-            Player player = players[currentPlayer];
+            Player player = _players[currentPlayer];
 
             Console.WriteLine("Question was incorrectly answered");
             Console.WriteLine(player.Name + " was sent to the penalty box");
-            inPenaltyBox[currentPlayer] = true;
+            player.GoToPenaltyBox();
 
             currentPlayer++;
-            if (currentPlayer == players.Count) currentPlayer = 0;
+            if (currentPlayer == _players.Count) currentPlayer = 0;
             return true;
         }
 
 
         private bool DidPlayerWin()
         {
-            Player player = players[currentPlayer];
+            Player player = _players[currentPlayer];
 
             return player.GoldCoins != 6;
         }
