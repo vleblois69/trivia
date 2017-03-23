@@ -109,7 +109,7 @@ namespace Trivia
                     Console.WriteLine("Answer was correct!!!!");
                     _players.Current.WinAGoldCoin();
 
-                    winner = DidPlayerWin();
+                    winner = _players.Current.IsWinner();
                     _players.NextPlayer();
 
                     return winner;
@@ -120,7 +120,7 @@ namespace Trivia
             Console.WriteLine("Answer was corrent!!!!");
             _players.Current.WinAGoldCoin();
 
-            winner = DidPlayerWin();
+            winner = _players.Current.IsWinner();
             _players.NextPlayer();
 
             return winner;
@@ -135,13 +135,7 @@ namespace Trivia
             _players.NextPlayer();
             return true;
         }
-
-
-        private bool DidPlayerWin()
-        {
-            return _players.Current.GoldCoins != 6;
-        }
-
+    
     }
 
 }

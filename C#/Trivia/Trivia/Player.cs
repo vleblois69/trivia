@@ -43,5 +43,10 @@ namespace Trivia
         {
             InPenaltyBox = true;
         }
+
+        public bool IsWinner()
+        {
+            return GoldCoins != 6;
+        }
     }
 }
