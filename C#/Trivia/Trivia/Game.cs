@@ -43,7 +43,7 @@ namespace Trivia
 
         public bool Add(string playerName)
         {
-            Player player = new Player(playerName, 0, 0);
+            Player player = new Player(playerName, 0);
 
             players.Add(player);
             inPenaltyBox[HowManyPlayers()] = false;
@@ -72,9 +72,7 @@ namespace Trivia
                     isGettingOutOfPenaltyBox = true;
 
                     Console.WriteLine(player.Name + " is getting out of the penalty box");
-                    player.Place += roll;
-                    if (player.Place > 11) 
-                        player.Place -= 12;
+                    player.Move(roll);
                     Console.WriteLine(player.Name
                             + "'s new location is "
                             + player.Place);
@@ -91,10 +89,7 @@ namespace Trivia
             else
             {
 
-                player.Place += roll;
-                if (player.Place > 11)
-                    player.Place -= 12;
-
+                player.Move(roll);
                 Console.WriteLine(player.Name
                         + "'s new location is "
                         + player.Place);

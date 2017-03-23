@@ -13,12 +13,17 @@ namespace Trivia
 
         public int Purse { get; set; }
         
-        public Player(string newName, int newPlace, int newPurse)
+        public Player(string newName, int newPurse)
         {
             Name = newName;
-            Place = newPlace;
+            Place = 0;
             Purse = newPurse;
         }
 
+        public void Move(int roll)
+        {
+            Place += roll;
+            if (Place > 11) Place -= 12;
+        }
     }
 }
