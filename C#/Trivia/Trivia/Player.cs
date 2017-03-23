@@ -9,21 +9,26 @@ namespace Trivia
     {
         public string Name { get; set; }
 
-        public int Place { get; set; }
+        public int Place { get; private set; }
 
-        public int Purse { get; set; }
+        public int GoldCoins { get; private set; }
         
-        public Player(string newName, int newPurse)
+        public Player(string name)
         {
-            Name = newName;
+            Name = name;
             Place = 0;
-            Purse = newPurse;
+            GoldCoins = 0;
         }
 
         public void Move(int roll)
         {
             Place += roll;
             if (Place > 11) Place -= 12;
+        }
+
+        public void WinAGoldCoin()
+        {
+            GoldCoins++;
         }
     }
 }

@@ -43,7 +43,7 @@ namespace Trivia
 
         public bool Add(string playerName)
         {
-            Player player = new Player(playerName, 0);
+            Player player = new Player(playerName);
 
             players.Add(player);
             inPenaltyBox[HowManyPlayers()] = false;
@@ -151,10 +151,10 @@ namespace Trivia
                 if (isGettingOutOfPenaltyBox)
                 {
                     Console.WriteLine("Answer was correct!!!!");
-                    player.Purse++;
+                    player.WinAGoldCoin();
                     Console.WriteLine(player.Name
                             + " now has "
-                            + player.Purse
+                            + player.GoldCoins
                             + " Gold Coins.");
 
                     bool winner = DidPlayerWin();
@@ -177,10 +177,10 @@ namespace Trivia
             {
 
                 Console.WriteLine("Answer was corrent!!!!");
-                player.Purse++;
+                player.WinAGoldCoin();
                 Console.WriteLine(player.Name
                         + " now has "
-                        + player.Purse
+                        + player.GoldCoins
                         + " Gold Coins.");
 
                 bool winner = DidPlayerWin();
@@ -209,7 +209,7 @@ namespace Trivia
         {
             Player player = players[currentPlayer];
 
-            return player.Purse != 6;
+            return player.GoldCoins != 6;
         }
     }
 
