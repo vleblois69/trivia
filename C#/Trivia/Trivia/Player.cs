@@ -7,6 +7,7 @@ namespace Trivia
 {
     class Player
     {
+
         public string Name { get; set; }
 
         public int Place { get; private set; }
@@ -29,6 +30,7 @@ namespace Trivia
         {
             Place += roll;
             if (Place > 11) Place -= 12;
+            Console.WriteLine(Name + "'s new location is " + Place);
         }
 
         public void WinAGoldCoin()
