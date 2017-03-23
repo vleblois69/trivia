@@ -15,12 +15,13 @@ namespace Trivia
             for (int i = 0; i < 100; i++)
             {
                 Console.WriteLine("-------------------------------- partie " + i);
-                Game aGame = new Game();
 
-                aGame.Add("Chet");
-                aGame.Add("Pat");
-                aGame.Add("Sue");
+                var players = new Players();
+                players.Add("Chet");
+                players.Add("Pat");
+                players.Add("Sue");
 
+                var aGame = new Game(players);
 
                 Random rand = new Random(i);
 
