@@ -8,7 +8,7 @@ namespace Trivia
     public class GameRunner
     {
 
-        private static bool notAWinner;
+        private static bool Winner;
 
         public static void Main(String[] args)
         {
@@ -28,8 +28,8 @@ namespace Trivia
                 do
                 {
                     aGame.Roll(rand.Next(5) + 1);
-                    notAWinner = rand.Next(9) == 7 ? aGame.WrongAnswer() : aGame.WasCorrectlyAnswered();
-                } while (notAWinner);
+                    Winner = rand.Next(9) == 7 ? aGame.WrongAnswer() : aGame.WasCorrectlyAnswered();
+                } while (!Winner);
             }
         }
     }

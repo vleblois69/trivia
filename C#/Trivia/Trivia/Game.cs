@@ -114,8 +114,9 @@ namespace Trivia
 
                     return winner;
                 }
+
                 _players.NextPlayer();
-                return true;
+                return false;
             }
             Console.WriteLine("Answer was corrent!!!!");
             _players.Current.WinAGoldCoin();
@@ -133,7 +134,7 @@ namespace Trivia
             _players.Current.GoToPenaltyBox();
 
             _players.NextPlayer();
-            return true;
+            return false;
         }
     
     }
