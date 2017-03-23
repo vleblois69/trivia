@@ -152,10 +152,6 @@ namespace Trivia
                 {
                     Console.WriteLine("Answer was correct!!!!");
                     player.WinAGoldCoin();
-                    Console.WriteLine(player.Name
-                            + " now has "
-                            + player.GoldCoins
-                            + " Gold Coins.");
 
                     bool winner = DidPlayerWin();
                     currentPlayer++;
@@ -178,10 +174,6 @@ namespace Trivia
 
                 Console.WriteLine("Answer was corrent!!!!");
                 player.WinAGoldCoin();
-                Console.WriteLine(player.Name
-                        + " now has "
-                        + player.GoldCoins
-                        + " Gold Coins.");
 
                 bool winner = DidPlayerWin();
                 currentPlayer++;

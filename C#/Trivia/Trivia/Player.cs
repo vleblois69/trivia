@@ -29,6 +29,7 @@ namespace Trivia
         public void WinAGoldCoin()
         {
             GoldCoins++;
+            Console.WriteLine(Name + " now has " + GoldCoins + " Gold Coins.");
         }
     }
 }
