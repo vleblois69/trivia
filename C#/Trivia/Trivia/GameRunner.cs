@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-using UglyTrivia;
-
 namespace Trivia
 {
     public class GameRunner
@@ -16,37 +14,23 @@ namespace Trivia
         {
             for (int i = 0; i < 100; i++)
             {
-
                 Console.WriteLine("-------------------------------- partie " + i);
                 Game aGame = new Game();
 
-                aGame.add("Chet");
-                aGame.add("Pat");
-                aGame.add("Sue");
+                aGame.Add("Chet");
+                aGame.Add("Pat");
+                aGame.Add("Sue");
 
 
                 Random rand = new Random(i);
 
                 do
                 {
-
-                    aGame.roll(rand.Next(5) + 1);
-
-                    if (rand.Next(9) == 7)
-                    {
-                        notAWinner = aGame.wrongAnswer();
-                    }
-                    else
-                    {
-                        notAWinner = aGame.wasCorrectlyAnswered();
-                    }
-
+                    aGame.Roll(rand.Next(5) + 1);
+                    notAWinner = rand.Next(9) == 7 ? aGame.WrongAnswer() : aGame.WasCorrectlyAnswered();
                 } while (notAWinner);
             }
-
         }
-
     }
-
 }
 

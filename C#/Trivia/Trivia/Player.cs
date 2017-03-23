@@ -7,41 +7,18 @@ namespace Trivia
 {
     class Player
     {
-        private String name;
-        private int place;
+        public String Name { get; set; }
 
-        public Player(String newName, int newPlace)
+        public int Place { get; set; }
+
+        public int Purse { get; set; }
+        
+        public Player(String newName, int newPlace, int newPurse)
         {
-            this.name = newName;
-            this.place = newPlace;
+            this.Name = newName;
+            this.Place = newPlace;
+            this.Purse = newPurse;
         }
-
-        public String getName()
-        {
-            return name;
-        }
-
-        public void setName(String newName)
-        {
-            this.name = newName;
-        }
-
-        public int getPlace()
-        {
-            return place;
-        }
-
-        public void setPlace(int newPlace)
-        {
-            this.place = newPlace;
-        }
-
-
-        public override string ToString()
-        {
-            return name;
-        }
-   
 
     }
 }
