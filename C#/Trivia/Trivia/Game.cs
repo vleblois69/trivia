@@ -8,6 +8,8 @@ namespace Trivia
     {
         private readonly List<Player> _players = new List<Player>();
 
+        private readonly Dictionary<int, string> _categories = new Dictionary<int, string>() { { 0, "Pop" }, { 1, "Science" }, { 2, "Sports" }, { 3, "Rock" } };
+
         LinkedList<string> popQuestions = new LinkedList<string>();
         LinkedList<string> scienceQuestions = new LinkedList<string>();
         LinkedList<string> sportsQuestions = new LinkedList<string>();
@@ -122,19 +124,8 @@ namespace Trivia
         private string CurrentCategory()
         {
             Player player = _players[currentPlayer];
-
-            int place = player.Place;
-
-            if (place == 0) return "Pop";
-            if (place == 4) return "Pop";
-            if (place == 8) return "Pop";
-            if (place == 1) return "Science";
-            if (place == 5) return "Science";
-            if (place == 9) return "Science";
-            if (place == 2) return "Sports";
-            if (place == 6) return "Sports";
-            if (place == 10) return "Sports";
-            return "Rock";
+            
+            return _categories[player.Place % 4];
         }
 
         public bool WasCorrectlyAnswered()
