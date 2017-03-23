@@ -7,17 +7,17 @@ namespace Trivia
 {
     class Player
     {
-        public String Name { get; set; }
+        public string Name { get; set; }
 
         public int Place { get; set; }
 
         public int Purse { get; set; }
         
-        public Player(String newName, int newPlace, int newPurse)
+        public Player(string newName, int newPlace, int newPurse)
         {
-            this.Name = newName;
-            this.Place = newPlace;
-            this.Purse = newPurse;
+            Name = newName;
+            Place = newPlace;
+            Purse = newPurse;
         }
 
     }
