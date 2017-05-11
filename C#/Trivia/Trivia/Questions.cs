@@ -13,7 +13,7 @@ namespace Trivia
             { 2, new QuestionsStack("Sports") }, 
             { 3, new QuestionsStack("Rock") }
         };
-        
+
         public Questions()
         {
             GenerateQuestions();
@@ -21,12 +21,9 @@ namespace Trivia
 
         private void GenerateQuestions()
         {
-            for (var i = 0; i < 50; i++)
+            foreach (var questionsStack in _categories)
             {
-                foreach (var questionsStack in _categories)
-                {
-                    questionsStack.Value.AddLast(i);
-                }
+                questionsStack.Value.GenerateQuestions();
             }
         }
 

@@ -13,12 +13,15 @@ namespace Trivia
             Category = category;
         }
 
-        public string Category { get; private set; }
-
-        public void AddLast(int index)
+        public void GenerateQuestions()
         {
-            _questions.AddLast(Category + " Question " + index);
+            for (var i = 0; i < 50; i++)
+            {
+                _questions.AddLast(Category + " Question " + i);
+            }
         }
+
+        public string Category { get; private set; }
 
         public void AskQuestionAndDiscard()
         {
