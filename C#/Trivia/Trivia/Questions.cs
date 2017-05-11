@@ -4,33 +4,27 @@ using System.Linq;
 
 namespace Trivia
 {
-    internal class Questions
+    public class Questions
     {
-        private readonly Dictionary<int, QuestionsStack> _categories = new Dictionary<int, QuestionsStack>()
-        {
-            { 0, new QuestionsStack("Pop") }, 
-            { 1, new QuestionsStack("Science") }, 
-            { 2, new QuestionsStack("Sports") }, 
-            { 3, new QuestionsStack("Rock") }
-        };
+        private readonly List<QuestionsStack> _categories = new List<QuestionsStack>();
 
-        public Questions()
+        public Questions() : this(new [] { "Pop", "Science", "Sports", "Rock" })
         {
-            GenerateQuestions();
         }
 
-        private void GenerateQuestions()
+        public Questions(IEnumerable<string> categories)
         {
-            foreach (var questionsStack in _categories)
+            foreach (var category in categories)
             {
-                questionsStack.Value.GenerateQuestions();
+                var questionsStack = new QuestionsStack(category);
+                _categories.Add(questionsStack);
             }
         }
 
         public void AskQuestion(int currentPlayerPlace)
         {
-            Console.WriteLine("The category is " + _categories[currentPlayerPlace % 4].Category);
-            _categories[currentPlayerPlace % 4].AskQuestionAndDiscard();
+            Console.WriteLine("The category is " + _categories[currentPlayerPlace % _categories.Count].Category);
+            _categories[currentPlayerPlace % _categories.Count].AskQuestionAndDiscard();
         }
     }
 }

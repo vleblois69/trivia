@@ -8,14 +8,15 @@ namespace Trivia
     {   
         private readonly Players _players;
 
-        private readonly Questions _questions = new Questions();
+        private readonly Questions _questions;
         
         bool isGettingOutOfPenaltyBox;
 
 
-        public Game(Players players)
+        public Game(Players players, Questions questions)
         {
             _players = players;
+            _questions = questions;
         }
 
         public void Roll(int roll)

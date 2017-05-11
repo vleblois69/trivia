@@ -11,6 +11,7 @@ namespace Trivia
         public QuestionsStack(string category)
         {
             Category = category;
+            GenerateQuestions();
         }
 
         public void GenerateQuestions()
