@@ -13,16 +13,22 @@ namespace Trivia
             Console.WriteLine(displayedString);
         }
 
-        public void Dispatch<TEvent>(TEvent playerRolledDice)
+        public void Dispatch<TEvent>(TEvent evenement)
         {
-            if (playerRolledDice is string)
+            if (evenement is string)
             {
-                Console.WriteLine(playerRolledDice);
+                Console.WriteLine(evenement);
             }
-            else if (playerRolledDice is PlayerRolledDice)
+            else if (evenement is PlayerRolledDice)
             {
-                Console.WriteLine((playerRolledDice as PlayerRolledDice).PlayerName + " is the current player");
-                Console.WriteLine("They have rolled a " + (playerRolledDice as PlayerRolledDice).Roll);
+                Console.WriteLine((evenement as PlayerRolledDice).PlayerName + " is the current player");
+                Console.WriteLine("They have rolled a " + (evenement as PlayerRolledDice).Roll);
+            }
+            else if (evenement is PlayerMoved)
+            {
+                Console.WriteLine((evenement as PlayerMoved).PlayerName
+                         + "'s new location is "
+                         + (evenement as PlayerMoved).PlayerLocation);
             }
         }
     }

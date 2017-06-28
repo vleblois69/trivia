@@ -72,6 +72,7 @@
     <Compile Include="IDispatchEvent.cs" />
     <Compile Include="IQuestionsRepository.cs" />
     <Compile Include="Player.cs" />
+    <Compile Include="PlayerMoved.cs" />
     <Compile Include="PlayerRolledDice.cs" />
     <Compile Include="Players.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

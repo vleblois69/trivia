@@ -10,6 +10,6 @@ namespace Trivia
     {
         void Display(string displayedString);
 
-        void Dispatch<TEvent>(TEvent playerRolledDice);
+        void Dispatch<TEvent>(TEvent evenement);
     }
 }

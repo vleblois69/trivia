@@ -34,10 +34,7 @@ namespace Trivia
                     Console.WriteLine(_players.Current.Name + " is getting out of the penalty box");
                     _players.Current.Move(roll);
 
-                    Console.WriteLine(_players.Current.Name
-                            + "'s new location is "
-                            + _players.Current.Place);
-                    _questions.AskQuestion(_players.Current.Place);
+                   _eventDispatcher.Dispatch(new PlayerMoved(_players.Current.Name, _players.Current.Place));
                 }
                 else
                 {
@@ -49,10 +46,7 @@ namespace Trivia
             else
             {
                 _players.Current.Move(roll);
-
-                Console.WriteLine(_players.Current.Name
-                        + "'s new location is "
-                        + _players.Current.Place);
+                _eventDispatcher.Dispatch(new PlayerMoved(_players.Current.Name, _players.Current.Place));
                 _questions.AskQuestion(_players.Current.Place);
             }
 
