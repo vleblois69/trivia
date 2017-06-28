@@ -30,6 +30,18 @@ namespace Trivia
                          + "'s new location is "
                          + (evenement as PlayerMoved).PlayerLocation);
             }
+            else if (evenement is PlayerGotOutOfPenaltyBox)
+            {
+                Console.WriteLine((evenement as PlayerGotOutOfPenaltyBox).PlayerName + " is getting out of the penalty box");
+            }
+            else if (evenement is PlayerDidntGetOutOfPenaltyBox)
+            {
+                Console.WriteLine((evenement as PlayerDidntGetOutOfPenaltyBox).PlayerName + " is not getting out of the penalty box");
+            }
+            else if (evenement is PlayerSentToPenaltyBox)
+            {
+                Console.WriteLine((evenement as PlayerSentToPenaltyBox).PlayerName + " was sent to the penalty box");
+            }
         }
     }
 }

@@ -31,14 +31,14 @@ namespace Trivia
                 {
                     isGettingOutOfPenaltyBox = true;
 
-                    Console.WriteLine(_players.Current.Name + " is getting out of the penalty box");
+                    _eventDispatcher.Dispatch(new PlayerGotOutOfPenaltyBox(_players.Current.Name));
                     _players.Current.Move(roll);
 
                    _eventDispatcher.Dispatch(new PlayerMoved(_players.Current.Name, _players.Current.Place));
                 }
                 else
                 {
-                    Console.WriteLine(_players.Current.Name + " is not getting out of the penalty box");
+                    _eventDispatcher.Dispatch(new PlayerDidntGetOutOfPenaltyBox(_players.Current.Name));
                     isGettingOutOfPenaltyBox = false;
                 }
 
@@ -84,7 +84,7 @@ namespace Trivia
         public bool WrongAnswer()
         {
             Console.WriteLine("Question was incorrectly answered");
-            Console.WriteLine(_players.Current.Name + " was sent to the penalty box");
+            _eventDispatcher.Dispatch(new PlayerSentToPenaltyBox(_players.Current.Name));
             _players.Current.GoToPenaltyBox();
 
             _players.NextPlayer();
