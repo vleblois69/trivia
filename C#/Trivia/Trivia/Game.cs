@@ -9,21 +9,23 @@ namespace Trivia
         private readonly Players _players;
 
         private readonly Questions _questions;
+
+        private readonly IDisplay _display;
         
         bool isGettingOutOfPenaltyBox;
 
 
-        public Game(Players players, Questions questions)
+        public Game(Players players, Questions questions, IDisplay display)
         {
             _players = players;
             _questions = questions;
+            _display = display;
         }
 
         public void Roll(int roll)
         {
-            Console.WriteLine(_players.Current.Name + " is the current player");
-            Console.WriteLine("They have rolled a " + roll);
-
+            _display.Display(_players.Current.Name + " is the current player");
+            _display.Display("They have rolled a " + roll);
             if (_players.Current.InPenaltyBox)
             {
                 if (roll % 2 != 0)

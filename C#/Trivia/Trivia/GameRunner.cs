@@ -16,7 +16,7 @@ namespace Trivia
                 players.Add("Sue");
 
                 var categories = new[] { "Pop", "Science", "Sports", "Rock" };
-                var aGame = new Game(players, new Questions(categories, new GeneratedQuestions()));
+                var aGame = new Game(players, new Questions(categories, new GeneratedQuestions()), new ConsoleDisplay());
 
                 Random rand = new Random(i);
 
@@ -33,6 +33,7 @@ namespace Trivia
                         winner = aGame.WasCorrectlyAnswered();
                     }
                 } while (!winner);
+                Console.ReadLine();
             }
         }
     }
