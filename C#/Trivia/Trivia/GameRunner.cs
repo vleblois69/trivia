@@ -10,13 +10,14 @@ namespace Trivia
         {
             for (var i = 0; i < 10; i++)
             {
-                var players = new Players();
+                var consoleDisplay = new ConsoleDisplay();
+                var players = new Players(consoleDisplay);
                 players.Add("Chet");
                 players.Add("Pat");
                 players.Add("Sue");
 
                 var categories = new[] { "Pop", "Science", "Sports", "Rock" };
-                var aGame = new Game(players, new Questions(categories, new GeneratedQuestions()));
+                var aGame = new Game(players, new Questions(categories, new GeneratedQuestions(), consoleDisplay), consoleDisplay);
 
                 Random rand = new Random(i);
 
