@@ -7,11 +7,11 @@ namespace Trivia
     public class Players
     {
         private readonly List<Player> _players = new List<Player>();
-        private IDisplay _display;
+        private IDispatchEvent _dispatchEvent;
 
-        public Players(IDisplay display)
+        public Players(IDispatchEvent dispatchEvent)
         {
-            _display = display;
+            _dispatchEvent = dispatchEvent;
         }
 
         public Player Current { get; private set; }
@@ -25,15 +25,15 @@ namespace Trivia
 
         public bool Add(string playerName)
         {
-            var player = new Player(playerName, _display);
+            var player = new Player(playerName, _dispatchEvent);
             if (!_players.Any())
             {
                 Current = player;
             }
             _players.Add(player);
 
-            _display.Display(playerName + " was added");
-            _display.Display("They are player number " + _players.Count);
+            _dispatchEvent.Display(playerName + " was added");
+            _dispatchEvent.Display("They are player number " + _players.Count);
             return true;
         }
     }

@@ -8,13 +8,13 @@ namespace Trivia
     {
         private LinkedList<string> _questions = new LinkedList<string>();
         private IQuestionsRepository _questionsRepository;
-        private readonly IDisplay _display;
+        private readonly IDispatchEvent _dispatchEvent;
 
-        public QuestionsStack(string category, IQuestionsRepository questionsRepository, IDisplay display)
+        public QuestionsStack(string category, IQuestionsRepository questionsRepository, IDispatchEvent dispatchEvent)
         {
             Category = category;
             _questionsRepository = questionsRepository;
-            _display = display;
+            _dispatchEvent = dispatchEvent;
             _questions = _questionsRepository.Get(category);
         }
         
@@ -22,7 +22,7 @@ namespace Trivia
 
         public void AskQuestionAndDiscard()
         {
-            _display.Display(_questions.First());
+            _dispatchEvent.Display(_questions.First());
             _questions.RemoveFirst();
         }
     }

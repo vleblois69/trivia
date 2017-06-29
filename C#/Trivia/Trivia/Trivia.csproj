@@ -65,11 +65,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Presentation\ConsoleDisplay.cs" />
+    <Compile Include="Domain\PlayerRolledDice.cs" />
+    <Compile Include="Presentation\ConsoleDispatchEvent.cs" />
     <Compile Include="Domain\Game.cs" />
     <Compile Include="GameRunner.cs" />
     <Compile Include="DataAccess\GeneratedQuestions.cs" />
-    <Compile Include="Domain\IDisplay.cs" />
+    <Compile Include="Domain\IDispatchEvent.cs" />
     <Compile Include="Domain\IQuestionsRepository.cs" />
     <Compile Include="Domain\Player.cs" />
     <Compile Include="Domain\Players.cs" />

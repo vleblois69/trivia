@@ -10,7 +10,7 @@ namespace Trivia
         {
             for (var i = 0; i < 10; i++)
             {
-                var consoleDisplay = new ConsoleDisplay();
+                var consoleDisplay = new ConsoleDispatchEvent();
                 var players = new Players(consoleDisplay);
                 players.Add("Chet");
                 players.Add("Pat");

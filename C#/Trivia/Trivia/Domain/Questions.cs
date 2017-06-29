@@ -7,21 +7,21 @@ namespace Trivia
     public class Questions
     {
         private readonly List<QuestionsStack> _categories = new List<QuestionsStack>();
-        private IDisplay _display;
+        private IDispatchEvent _dispatchEvent;
 
-        public Questions(IEnumerable<string> categories, IQuestionsRepository questionsRepository, IDisplay display)
+        public Questions(IEnumerable<string> categories, IQuestionsRepository questionsRepository, IDispatchEvent dispatchEvent)
         {
-            _display = display;
+            _dispatchEvent = dispatchEvent;
             foreach (var category in categories)
             {
-                var questionsStack = new QuestionsStack(category, questionsRepository, _display);
+                var questionsStack = new QuestionsStack(category, questionsRepository, _dispatchEvent);
                 _categories.Add(questionsStack);
             }
         }
 
         public void AskQuestion(int currentPlayerPlace)
         {
-            _display.Display("The category is " + _categories[currentPlayerPlace % _categories.Count].Category);
+            _dispatchEvent.Display("The category is " + _categories[currentPlayerPlace % _categories.Count].Category);
             _categories[currentPlayerPlace % _categories.Count].AskQuestionAndDiscard();
         }
     }
