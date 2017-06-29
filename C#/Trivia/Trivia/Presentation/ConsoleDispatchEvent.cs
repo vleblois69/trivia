@@ -21,6 +21,13 @@ namespace Trivia
             {
                 Console.WriteLine((@event as PlayerGetOutOfPenaltyBox).Name + " is getting out of the penalty box");
             }
+            else if (@event.GetType() == typeof(PlayerWonAGoldPoint))
+            {
+                Console.WriteLine("Answer was correct!!!!");
+                var playerWonAGoldPoint = @event as PlayerWonAGoldPoint;
+                Console.WriteLine(playerWonAGoldPoint.Name + " now has " + playerWonAGoldPoint.GoldCoins + " Gold Coins.");
+            }
+
         }
     }
 }

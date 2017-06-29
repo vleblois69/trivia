@@ -64,7 +64,6 @@ namespace Trivia
             {
                 if (isGettingOutOfPenaltyBox)
                 {
-                    _eventDispatcher.Display("Answer was correct!!!!");
                     _players.Current.WinAGoldCoin();
 
                     winner = _players.Current.IsWinner();
@@ -77,7 +76,6 @@ namespace Trivia
                 return false;
             }
 
-            _eventDispatcher.Display("Answer was correct!!!!");
             _players.Current.WinAGoldCoin();
 
             winner = _players.Current.IsWinner();

@@ -32,7 +32,7 @@ namespace Trivia
         public void WinAGoldCoin()
         {
             GoldCoins++;
-            _dispatchEvent.Display(Name + " now has " + GoldCoins + " Gold Coins.");
+            _dispatchEvent.Dispatch(new PlayerWonAGoldPoint(Name, GoldCoins));
         }
 
         public void GoToPenaltyBox()
