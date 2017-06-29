@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace Trivia
@@ -31,7 +30,7 @@ namespace Trivia
                 {
                     isGettingOutOfPenaltyBox = true;
 
-                    _eventDispatcher.Display(_players.Current.Name + " is getting out of the penalty box");
+                    _eventDispatcher.Dispatch(new PlayerGetOutOfPenaltyBox(_players.Current.Name)));
                     _players.Current.Move(roll);
 
                     _eventDispatcher.Display(_players.Current.Name

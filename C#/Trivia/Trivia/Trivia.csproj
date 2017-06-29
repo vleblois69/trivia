@@ -65,6 +65,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\PlayerGetOutOfPenaltyBox.cs" />
     <Compile Include="Domain\PlayerRolledDice.cs" />
     <Compile Include="Presentation\ConsoleDispatchEvent.cs" />
     <Compile Include="Domain\Game.cs" />

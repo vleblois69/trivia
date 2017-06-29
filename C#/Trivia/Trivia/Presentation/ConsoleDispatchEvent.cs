@@ -17,6 +17,10 @@ namespace Trivia
                 Console.WriteLine(playerRolledDice.Name + " is the current player");
                 Console.WriteLine("They have rolled a " + playerRolledDice.Roll);
             }
+            else if (@event.GetType() == typeof(PlayerGetOutOfPenaltyBox))
+            {
+                Console.WriteLine((@event as PlayerGetOutOfPenaltyBox).Name + " is getting out of the penalty box");
+            }
         }
     }
 }
