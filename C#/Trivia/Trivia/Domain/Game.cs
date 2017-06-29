@@ -30,7 +30,7 @@ namespace Trivia
                 {
                     isGettingOutOfPenaltyBox = true;
 
-                    _eventDispatcher.Dispatch(new PlayerGetOutOfPenaltyBox(_players.Current.Name)));
+                    _eventDispatcher.Dispatch(new PlayerGetOutOfPenaltyBox(_players.Current.Name));
                     _players.Current.Move(roll);
 
                     _eventDispatcher.Display(_players.Current.Name
@@ -77,7 +77,7 @@ namespace Trivia
                 return false;
             }
 
-            _eventDispatcher.Display("Answer was corrent!!!!");
+            _eventDispatcher.Display("Answer was correct!!!!");
             _players.Current.WinAGoldCoin();
 
             winner = _players.Current.IsWinner();
